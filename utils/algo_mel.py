@@ -76,6 +76,7 @@ def mfcc(data=None, fs=22050, n_mfcc=20, dct_type=2, norm="ortho", LogEnergy=Non
     if LogEnergy == 'Append' or LogEnergy == 'Replace':
         mt_data = buffer(data, win_length, hop_length)
         energyLog = np.sum(mt_data**2, axis=0)
+        energyLog = energyLog.reshape((1, len(energyLog)))
 
     melSpec = melspec(data=data, fs=fs, win_length=win_length, hop_length= hop_length, **kwargs)
 
